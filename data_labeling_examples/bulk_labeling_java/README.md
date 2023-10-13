@@ -171,17 +171,17 @@ java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DOBJECT_STORAG
 6. Run the below command to bulk label by "FIRST_LETTER_MATCH" labeling algorithm.
 
 ```
-java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://dlsprod-dp.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID=ocid1.datalabelingdatasetint.oc1.phx.amaaaaaaniob46ia7ybplfjdfmohqxxmwpg4p6nftl4ypnuirvsljkzhlq3q -DLABELING_ALGORITHM=FIRST_LETTER_MATCH -DLABELS=cat,dog -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.SingleLabelDatasetBulkLabelingScript
+java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://datalabeling-dp.ap.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID={data_labelling_ocid} -DLABELING_ALGORITHM=FIRST_LETTER_MATCH -DLABELS=cat,dog -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.SingleLabelDatasetBulkLabelingScript
 ```
 7. Run the below command to bulk label by "FIRST_REGEX_MATCH" labeling algorithm.
 
 ```
-java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://dlsprod-dp.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID=ocid1.datalabelingdatasetint.oc1.phx.amaaaaaaniob46ia7ybplfjdfmohqxxmwpg4p6nftl4ypnuirvsljkzhlq3q -DLABELING_ALGORITHM=FIRST_REGEX_MATCH -DFIRST_MATCH_REGEX_PATTERN=^abc* -DLABELS=cat,dog -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.SingleLabelDatasetBulkLabelingScript
+java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://datalabeling-dp.ap.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID={data_labelling_ocid} -DLABELING_ALGORITHM=FIRST_REGEX_MATCH -DFIRST_MATCH_REGEX_PATTERN=^abc* -DLABELS=cat,dog -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.SingleLabelDatasetBulkLabelingScript
 ```
 8. Run the below command to bulk label by "CUSTOM_LABELS_MATCH" labeling algorithm.
 
 ```
-java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://dlsprod-dp.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID=ocid1.datalabelingdatasetint.oc1.phx.amaaaaaaniob46ia7ybplfjdfmohqxxmwpg4p6nftl4ypnuirvsljkzhlq3q -DLABELING_ALGORITHM=CUSTOM_LABELS_MATCH -DCUSTOM_LABELS='{"dog/": ["dog"], "cat/": ["cat"] }' -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.CustomBulkLabelingScript
+java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://datalabeling-dp.ap.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID={data_labelling_ocid} -DLABELING_ALGORITHM=CUSTOM_LABELS_MATCH -DCUSTOM_LABELS='{"dog/": ["dog"], "cat/": ["cat"] }' -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.CustomBulkLabelingScript
 ```
 9. Run the below command to bulk label by "ML_ASSISTED_LABELING" labeling algorithm.
 
@@ -206,12 +206,12 @@ Known issues -
 Language service text classification returns the dominant category to which a particular text belongs. So, auto labeling is not supported for multilabel text classification usecase.
 
 ```
-java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DTHREAD_COUNT=20 -DREGION=us-phoenix-1 -DLABELING_ALGORITHM=ML_ASSISTED_LABELING -DML_MODEL_TYPE=PRETRAINED -DCONFIDENCE_THRESHOLD=0.8 -DDATASET_ID=ocid1.datalabelingdataset.oc1.phx.amaaaaaaniob46ia4qae7hitbpxx6cmc6kmoowvxkckxmdlmdvtdprgibnsa -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.BulkAssistedLabelingScript
+java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DTHREAD_COUNT=20 -DREGION=us-phoenix-1 -DLABELING_ALGORITHM=ML_ASSISTED_LABELING -DML_MODEL_TYPE=PRETRAINED -DCONFIDENCE_THRESHOLD=0.8 -DDATASET_ID={data_labelling_ocid} -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.BulkAssistedLabelingScript
 ```
 
 10. Run the below command to remove labels from records
 ```
-java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL=https://dlstest-dp.<REGION>.oci.oraclecloud.com -DTHREAD_COUNT=20 -DDATASET_ID=ocid1.datalabelingdatasetint.oc1.phx.amaaaaaaniob46ia7ybplfjdfmohqxxmwpg4p6nftl4ypnuirvsljkzhlq3q -DREMOVE_LABEL_PREFIX='cat' -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.RemoveLabelScript
+java -DCONFIG_FILE_PATH='~/.oci/config' -DCONFIG_PROFILE=DEFAULT -DDLS_DP_URL= -DTHREAD_COUNT=20 -DDATASET_ID={data_labelling_ocid} -DREMOVE_LABEL_PREFIX='cat' -cp libs/bulklabelutility-v3.jar com.oracle.datalabelingservicesamples.scripts.RemoveLabelScript
 ```
 
 Note: You can override any config using -D followed by the configuration name. The list of all configurations are mentioned in following section.
